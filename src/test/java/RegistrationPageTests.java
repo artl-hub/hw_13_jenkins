@@ -1,4 +1,5 @@
 import data.DataFaker;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -6,16 +7,18 @@ import pages.RegistrationPage;
 import static io.qameta.allure.Allure.step;
 
 
+@DisplayName("Заполненение формы регистрации и проверка")
 @Tag("hw_13")
 public class RegistrationPageTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     DataFaker data = new DataFaker();
 
+    @DisplayName("Полное заполнение формы, отправка и проверка")
     @Test
     void fillFormTestFaker() {
 
-        step("Полное заполнение и отправка формы", () -> {
+        step("Открытие полное заполнение и отправка формы", () -> {
             registrationPage.openPage()
                     .setFirstName(data.firstName)
                     .setLastName(data.lastName)
@@ -52,6 +55,7 @@ public class RegistrationPageTests extends TestBase {
         });
     }
 
+    @DisplayName("Минимальное заполнение формы, отправка и проверка")
     @Test
     void minimumfillFomTest() {
         step("Минимальное заполнение и отправка формы", () -> {
@@ -80,6 +84,7 @@ public class RegistrationPageTests extends TestBase {
         });
     }
 
+    @DisplayName("Отправка пустой формы")
     @Test
     void emptyFormNegativeTest() {
 
