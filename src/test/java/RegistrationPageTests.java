@@ -18,8 +18,12 @@ public class RegistrationPageTests extends TestBase {
     @Test
     void fillFormTestFaker() {
 
-        step("Открытие полное заполнение и отправка формы", () -> {
-            registrationPage.openPage()
+        step("Открытие страницы с формой", () -> {
+            registrationPage.openPage();
+        });
+
+        step("Заполнение и отправка формы", () -> {
+            registrationPage
                     .setFirstName(data.firstName)
                     .setLastName(data.lastName)
                     .setEmail(data.userEmail)
@@ -58,9 +62,12 @@ public class RegistrationPageTests extends TestBase {
     @DisplayName("Минимальное заполнение формы, отправка и проверка")
     @Test
     void minimumfillFomTest() {
+        step("Открытие страницы с формой", () -> {
+            registrationPage.openPage();
+        });
         step("Минимальное заполнение и отправка формы", () -> {
 
-            registrationPage.openPage()
+            registrationPage
                     .setFirstName(data.firstName)
                     .setLastName(data.lastName)
                     .setGender(data.gender)
@@ -87,16 +94,18 @@ public class RegistrationPageTests extends TestBase {
     @DisplayName("Отправка пустой формы")
     @Test
     void emptyFormNegativeTest() {
-
-    step("Отправка пустой формы", () -> {
-            registrationPage
-                    .openPage()
-                    .submitForm()
-                    .checkEmptyFormNotSended();
+        step("Открытие страницы с формой", () -> {
+            registrationPage.openPage();
         });
 
+        step("Отправка пустой формы", () -> {
+            registrationPage.submitForm();
 
+        });
 
+        step("Проверка, что пустая форма не отправлена", () -> {
+            registrationPage.checkEmptyFormNotSended();
+        });
 
     }
 }
