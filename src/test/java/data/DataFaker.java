@@ -19,7 +19,9 @@ public class DataFaker {
             monthOfbirth = faker.options().option("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"),
 
     /*dayOfBirth = String.valueOf(faker.number().numberBetween(1, 30)),*/
-            dayOfBirth = String.format("%02d", faker.number().numberBetween(1, 28)),
+//            dayOfBirth = String.format("%02d", faker.number().numberBetween(10, 28)),
+            dayOfBirth = String.valueOf(faker.number().numberBetween(1, 28)),
+
             subjects = faker.options().option("Arts", "Maths", "Hindi"),
             hobbies = faker.options().option("Sports", "Reading", "Music"),
             state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
